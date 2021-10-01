@@ -1,28 +1,37 @@
-# Project at: https://pypi.org/project/moviepy/
-from moviepy.editor import *
-import itov_helpers
+# This is the main file.
 
-# Sample image code taken from: https://www.tutorialexample.com/python-moviepy-convert-images-png-jpg-to-video-python-moviepy-tutorial/
-# Sample audio code taken from: https://stackoverflow.com/a/55920417
+# Library documentation at: https://pypi.org/project/moviepy/
+from moviepy.editor import *
+
+import itov_helpers
 
 outputPath = "out/"
 
-# Sound credits: https://soundbible.com/royalty-free-sounds-1.html
-audioFilePath = "audio/bells-tibetan-daniel_simon.mp3"
-audioclip = AudioFileClip(audioFilePath)
-new_audioclip = CompositeAudioClip([audioclip])
+# Load the lists of Audio and Image files available.
+audio_files = itov_helpers.getListOfAudioFiles()
+image_files = itov_helpers.getListOfImageFiles()
+imgFileCount = len(image_files)
+img_counter = 0
 
-# Give the video 2 more seconds of runtime so that the end is not too abrupt
-audioduration = 0
-audioduration = audioclip.duration
-videoduration = audioduration + 2
+# Create a video file for each audio file available.
+for audioFilePath in audio_files:
+    # Load the audio file as a Video Audio Clip.
+    audioclip = AudioFileClip(audioFilePath)
+    new_audioclip = CompositeAudioClip([audioclip])
 
-# Images credit: https://www.pexels.com/@maumascaro
-# files = ['img/712786.jpg', 'img/9192283.jpg', 'img/9192253.jpg']
-# clip = ImageSequenceClip(files, fps = 4, durations=[100,1000])
-imageFilePath = "img/9192253.jpg"
-clip = ImageClip(imageFilePath, duration=videoduration)
+    # Give the video 2 more seconds of runtime so that the end is not too abrupt
+    audioduration = 0
+    audioduration = audioclip.duration
+    videoduration = audioduration + 2
 
-videoBaseName = itov_helpers.getBaseFileName(audioFilePath)
-clip.audio = new_audioclip
-clip.write_videofile(outputPath + videoBaseName + ".mp4", fps = 24)
+    # When indexing the list of Image Files, we use Modulo with the number of
+    # image files because, if there are more audio files than images, then this
+    # will allow us to loop back to the first image (instead of running out of images to use).
+    imageFilePath = image_files[img_counter%imgFileCount]
+    img_counter += 1
+    clip = ImageClip(imageFilePath, duration=videoduration)
+
+    # Generate the filename and create the video file for each corresponding audio.
+    videoBaseName = itov_helpers.getBaseFileName(audioFilePath)
+    clip.audio = new_audioclip
+    clip.write_videofile(outputPath + videoBaseName + ".mp4", fps = 24)
