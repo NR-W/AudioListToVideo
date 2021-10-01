@@ -15,7 +15,7 @@ pip install moviepy
 
 Other reference: https://pypi.org/project/moviepy/
 
-Note: I have forked the MoviePy to have the library accessible, in case any change to the main library breaks any functionality.
+Note: I have [forked MoviePy](https://github.com/NR-W/moviepy/) to have the library accessible, in case any change to the main library breaks any functionality.
 
 ## Usage
 To generate video files using this script, copy your audio files into the audio/ directory and copy the images you wish to use into the img/ directory. Replace existing sample audio/image files before copying your own. File audioToVideo.py is the (main) file to execute when you are ready to generate your videos. This will generate the videos and save them in the out/ directory.
