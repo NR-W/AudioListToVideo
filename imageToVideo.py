@@ -1,6 +1,8 @@
 # Project at: https://pypi.org/project/moviepy/
 from moviepy.editor import *
 
+import itov_helpers
+
 # Sample image code taken from: https://www.tutorialexample.com/python-moviepy-convert-images-png-jpg-to-video-python-moviepy-tutorial/
 # Sample audio code taken from: https://stackoverflow.com/a/55920417
 
@@ -21,3 +23,6 @@ clip = ImageClip("img/9192283.jpg", duration=videoduration)
 
 clip.audio = new_audioclip
 clip.write_videofile("video.mp4", fps = 24)
+
+# Get and print list of files
+itov_helpers.printFiles()
