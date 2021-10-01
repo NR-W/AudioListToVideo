@@ -22,3 +22,7 @@ def printFiles():
     print("Printing base audio filenames: ")
     for audioFile in audio_files:
         print(os.path.splitext(os.path.basename(audioFile))[0])
+
+
+def getBaseFileName(filepath):
+    return os.path.splitext(os.path.basename(filepath))[0]
