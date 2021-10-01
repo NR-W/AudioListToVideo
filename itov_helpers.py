@@ -1,3 +1,7 @@
+"""
+This file contains funtions used to aid in the execution of the AudioToVideo tool. 
+"""
+
 from moviepy.editor import *
 
 # If filepath is "c:/path/to/filename.txt", then the return value of this

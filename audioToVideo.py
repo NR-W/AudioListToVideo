@@ -1,8 +1,11 @@
-# This is the main file.
+"""
+This is the main file for executing the Tool functionality.
+When this file is run, a video file will be generated for each audio file found  in
+the audio/ directory.
+This tool is dependent on the MoviePy project (https://pypi.org/project/moviepy).
+"""
 
-# Library documentation at: https://pypi.org/project/moviepy/
 from moviepy.editor import *
-
 import itov_helpers
 
 outputPath = "out/"
