@@ -5,6 +5,8 @@ import itov_helpers
 # Sample image code taken from: https://www.tutorialexample.com/python-moviepy-convert-images-png-jpg-to-video-python-moviepy-tutorial/
 # Sample audio code taken from: https://stackoverflow.com/a/55920417
 
+outputPath = "out/"
+
 # Sound credits: https://soundbible.com/royalty-free-sounds-1.html
 audioFilePath = "audio/bells-tibetan-daniel_simon.mp3"
 audioclip = AudioFileClip(audioFilePath)
@@ -23,4 +25,4 @@ clip = ImageClip(imageFilePath, duration=videoduration)
 
 videoBaseName = itov_helpers.getBaseFileName(audioFilePath)
 clip.audio = new_audioclip
-clip.write_videofile(videoBaseName + ".mp4", fps = 24)
+clip.write_videofile(outputPath + videoBaseName + ".mp4", fps = 24)
