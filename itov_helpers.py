@@ -1,6 +1,7 @@
 from moviepy.editor import *
 
 
+# # Get and print list of files
 def printFiles():
     print("Get a list of files...")
 
@@ -24,5 +25,7 @@ def printFiles():
         print(os.path.splitext(os.path.basename(audioFile))[0])
 
 
+# If filepath is "c:/path/to/filename.txt", then the return value of this
+# function will be "filename" (without the file extension)
 def getBaseFileName(filepath):
     return os.path.splitext(os.path.basename(filepath))[0]
